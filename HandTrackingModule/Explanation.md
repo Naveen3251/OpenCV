@@ -12,19 +12,19 @@ The hand landmark model bundle detects the keypoint localization of 21 hand-knuc
 3.Hand landmarks detection model **identifies specific hand landmarks on the cropped hand image defined by the palm detection model**.<br>
 
 # Code Explanation
-The code begins by importing necessary libraries: cv2 for computer vision operations and mediapipe for hand tracking.
+The code begins by importing necessary libraries: **cv2** for computer vision operations and **mediapipe for hand tracking**.
 
-The HandDetector class is defined, which encapsulates the functionality for detecting and tracking hands. The constructor (__init__ method) initializes various parameters such as mode (whether to track hands in a static image or a video stream), maxHands (maximum number of hands to detect), detectionCon (detection confidence threshold), and trackCon (tracking confidence threshold).
+The **HandDetector class** is defined, which encapsulates the functionality for detecting and tracking hands. The constructor **(__init__ method)** initializes various parameters such as **mode** (whether to track hands in a static image or a video stream), **maxHands** (maximum number of hands to detect), **detectionCon** (detection confidence threshold), and **trackCon** (tracking confidence threshold).
 
-Inside the HandDetector class, the MediaPipe hands module is initialized using self.mpHands = mp.solutions.hands. This module provides pre-trained models and utilities for hand tracking.
+Inside the HandDetector class, the MediaPipe hands module is initialized using **self.mpHands = mp.solutions.hands.** This module provides pre-trained models and utilities for hand tracking.
 
-The finHands method of the HandDetector class takes an image (img) as input and detects hands in the image. It converts the image to RGB format, as MediaPipe requires RGB input. The self.hands.process function is used to process the RGB image and obtain hand tracking results (self.results).
+The **finHands method** of the HandDetector class takes an image (img) as input and detects hands in the image. **It converts the image to RGB format**, as **MediaPipe requires RGB input**. The self.hands.process function is used to process the RGB image and obtain hand tracking results (self.results).
 
-If hands are detected in the image (self.results.multi_hand_landmarks is not None), the code iterates over each detected hand and extracts the landmarks (key points) of the hand. The landmarks are represented by their normalized coordinates (lm.x and lm.y) relative to the width and height of the image.
+If hands are detected in the image (self.results.multi_hand_landmarks is not None), the code **iterates over each detected hand and extracts the landmarks** (key points) of the hand. The landmarks are represented by their normalized coordinates **(lm.x and lm.y)** relative to the **width and height** of the image.
 
 If the draw flag is set to True, the code draws circles at the landmark positions using cv2.circle, providing visual feedback of the detected landmarks on the image.
 
-The self.mpDraw.draw_landmarks function is used to draw connections between the landmarks, creating a skeleton-like representation of the hand.
+The **self.mpDraw.draw_landmarks** function is used to **draw connections** between the landmarks, creating a skeleton-like representation of the hand.
 
 The finHands method returns the modified image with the drawn landmarks and connections.
 
@@ -34,7 +34,7 @@ In the main function, the webcam video stream is captured using cv2.VideoCapture
 
 For each frame, the finHands method is called to detect and draw the hand landmarks on the image. The findPosition method is then called to obtain the landmark positions.
 
-If landmarks are detected (len(lmList) != 0), the code prints the position of the 5th landmark (lmList[4]).
+If landmarks are detected (len(lmList) != 0), the code prints the position of the 5th landmark (lmList[4]) **Note:Likewise you can extract your desired landmarks**.
 
 The code calculates the frames per second (FPS) by measuring the time it takes to process each frame.
 
