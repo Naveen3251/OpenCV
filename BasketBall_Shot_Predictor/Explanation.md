@@ -1,4 +1,5 @@
 # Introduction
+This project focuses on tracking the position and predicting the trajectory of a ball using color detection and polynomial regression. It demonstrates how computer vision techniques can be applied to analyze and understand the motion of objects in a video.
 
 # Result
 # Excatly predicted the ball will go into the basket
